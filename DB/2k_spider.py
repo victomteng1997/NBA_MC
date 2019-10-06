@@ -90,12 +90,8 @@ def update_database():
 players_stat = update_database()
 # writing everything into json and store in players_stat.json
 print(players_stat.keys())
-with open('players_stat.json', 'w') as f:
+with open('2k_players_stat.json', 'w') as f:
     json.dump(players_stat, f)
-
-
-
-
 
 
 ###############################
