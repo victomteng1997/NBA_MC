@@ -2,3 +2,10 @@ Key in the todos here and track in git.
 
 1. Some very basic state machine model
 2. NBA season mode only. No extra online mode / fantasy mode.
+
+2019/10/17
+After some "brainstorming" (which was random thinking before falling asleep lol), I decide to make this game possession based. Some basic rules are described below:
+1. In each possession, the ten players on the court are analyzed first.
+2. Players' decision are decided based on statistics and some random generator.
+3. Energy system should be considered, but I still haven't find a very nice model for that.
+4. Anyway, let's get started first.
