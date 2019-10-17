@@ -6,3 +6,5 @@ class Player():
 
     def displayPlayerBasicInfo(self):
         pass
+
+    def stats_import(self):
