@@ -1,0 +1,1 @@
+# The file should store the constants, lists, dictionaries, etc. for the in game statistics.

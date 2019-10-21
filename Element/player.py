@@ -8,3 +8,4 @@ class Player():
         pass
 
     def stats_import(self):
+        pass

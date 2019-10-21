@@ -9,3 +9,30 @@ After some "brainstorming" (which was random thinking before falling asleep lol)
 2. Players' decision are decided based on statistics and some random generator.
 3. Energy system should be considered, but I still haven't find a very nice model for that.
 4. Anyway, let's get started first.
+
+2019/10/21
+Let's identify what are the outputs from a possession
+1. How long does it take. Output the possession seconds. For gameplay reason, the possession will always be accurate to 0.1s instead of nba (only last minute to 0.1s)
+2. Outcome. Did the team score? Let's list down the possibilities:
+    (1) Hit a field goal:
+        (1.1) two points
+            (1.1.1) two points with a free throw
+        (1.2) three points
+            (1.2.1) three points with a free throw
+    (2) foul
+        (2.1) technical foul (a very specific case, need to discuss later)
+        (2.2) lead to free throw
+            (2.2.1) two
+            (2.2.2) three
+        (2.3) keep possession
+            (2.3.1) time change to a specific time (14s maybe)
+            (2.3.2) continue the 24s
+        (2.4) change possession
+    (3) Miss a field goal
+-------------------------------------------------
+So ultimately, in each possession we should return:
+1. Who keeps the possession after this possession?
+2. What is the remaining time for this possession?
+3. Did anyone score?
+4. Any other changes in the stats?
+-------------------------------------------------
