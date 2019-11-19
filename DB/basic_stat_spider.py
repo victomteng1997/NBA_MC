@@ -27,13 +27,30 @@ my_own_namelist = {}
 for i in result['resultSets'][0]['rowSet']:
     my_own_namelist[i[2]] = [i[0]]
 
-for name in my_own_namelist.keys():
-    player_id = my_own_namelist[name]
-    print(name,player_id)
-    season = '2018-19'
-    stats = player.PlayerGeneralSplits(player_id=player_id,season=season).json
-    #print(json.dumps(stats,indent=4,sort_keys=True))
-    # So for now I don't care about the parameters in the dictionary. I just save them down first.
-    target_dir = str(season)+'\\'+str(player_id)+'_'+str(name)
-    with open(target_dir, 'w') as f:
-        json.dump(stats, f)
+def query_data(case):
+## General Splits
+    if str(case) == "generalsplits":
+        for name in my_own_namelist.keys():
+            player_id = my_own_namelist[name]
+            print(name,player_id)
+            season = '2018-19'
+            stats = player.PlayerGeneralSplits(player_id=player_id,season=season).json
+            #print(json.dumps(stats,indent=4,sort_keys=True))
+            # So for now I don't care about the parameters in the dictionary. I just save them down first.
+            target_dir = str(season)+'\\generalsplits\\'+str(player_id)+'_'+str(name)
+            with open(target_dir, 'w') as f:
+                json.dump(stats, f)
+    elif str(case) == "shootingsplits":
+        for name in my_own_namelist.keys():
+            player_id = my_own_namelist[name]
+            print(name, player_id)
+            season = '2018-19'
+            stats = player.PlayerShootingSplits(player_id=player_id, season=season).json
+            # print(stats)
+            # print(json.dumps(stats,indent=4,sort_keys=True))
+            # So for now I don't care about the parameters in the dictionary. I just save them down first.
+            target_dir = str(season) + '\\shootingsplits\\' + str(player_id) + '_' + str(name)
+            with open(target_dir, 'w') as f:
+                json.dump(stats, f)
+
+# query_data("shootingsplits")

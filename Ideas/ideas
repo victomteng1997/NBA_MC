@@ -1,3 +1,10 @@
+2019/11/19
+Got some time to update the game during a boring meeting.
+Better game structure. Add "print option"
+Try to revise the team structure to easily add in team members. Then revise the possession generation.
+
+--------------------------------------------------
+
 Key in the todos here and track in git.
 
 1. Some very basic state machine model
@@ -36,3 +43,22 @@ So ultimately, in each possession we should return:
 3. Did anyone score?
 4. Any other changes in the stats?
 -------------------------------------------------
+
+2019/10/22
+The basic functions for gameplay are done. Currently we can randomly simulate the game.
+Now need some data processing to simulate the whole game.
+Also, I need to understand what are the stats listed in the data I have.
+
+I will do the following one by one:
+What I plan to do in the next step:
+1. Shooting (range and tendency)
+So for shooting, I need to be firstly crystal clear on what I need in the current phase.
+2 n 3 attempts and hits (total and per min). Actually this is all I need.
+
+--------------------------------------------------
+
+2019/10/24
+Quite cool today, I've finished the part for player basic shooting data (2, 3 and ft).
+Tmr I'll work on the player class to make it look better. Then I'll add the players into the team, and start a first
+round of simulation maybe.
+

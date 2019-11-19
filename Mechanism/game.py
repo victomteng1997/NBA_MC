@@ -87,8 +87,11 @@ class Possession():
         time = min(random.randint(5,24),(720-self.current_time%720))
         return change_possession, score, time
 
+
 class Game():
     def __init__(self, home_team, visit_team):
+
+        # game attribute
         self.home_team = home_team
         self.visit_team = visit_team
         self.current_time = 0
@@ -101,10 +104,23 @@ class Game():
         self.in_game_stats = {}
         self.game_end = False
 
+        # game setting
+        self.print_game_details = False
+
+
     def jump_ball(self):
         # a naive jumpball, half half prob
         teams = ['home','visit']
         self.possession_owner = teams[random.randint(0, 1)]
+
+    def check_leader(self):
+        '''
+        Get the leader in the current game.
+        Utilize the inbuilt self.score
+        :return: leading team
+        '''
+        leading_team = max(self.current_score, key=self.current_score.get)
+        return leading_team
 
     def do_one_possession(self):
         # initiate a new possession
@@ -112,14 +128,29 @@ class Game():
         ############# ALERT, the following line is only for testing purpose.
         change_possession, score, time = new_possession.handle_possession_for_testing()
         self.current_score[self.possession_owner] += score
-        if score != 0:
+        if score != 0 and self.print_game_details:
             print(str(self.possession_owner) + "scored " + str(score))
         self.current_time += time
-        if change_possession == True:
+        if change_possession:
             if self.possession_owner == 'home':
                 self.possession_owner = 'visit'
             else:
-                pass
-        print('Current time: ', self.current_time, " Current_score: ",self.current_score)
+                self.possession_owner = 'home'
+
+        if self.print_game_details:
+            print('Current time: ', self.current_time, " Current_score: ",self.current_score)
+
         if self.current_time >= 12*60*4:
             self.game_end = True
+
+    def simulate_game(self):
+        '''
+        Simulate the game with do_one_possession function
+        :return: winner of the game
+        '''
+        self.jump_ball()
+        while not self.game_end:
+            self.do_one_possession()
+        game_winner = self.check_leader()
+        print("Game winner: ", game_winner)
+        return game_winner
